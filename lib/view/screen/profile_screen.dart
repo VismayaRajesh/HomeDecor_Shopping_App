@@ -4,7 +4,7 @@ import 'package:homedecor_shopping_app/constants/My_app_icon.dart';
 
 import '../../widgets/backbutton.dart';
 import '../../widgets/furniture/Logoutbtn_widget.dart';
-import '../../widgets/furniture/profile_widget.dart';
+import '../../widgets/furniture/menu_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -282,15 +282,15 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 15,
             ),
-            ProfileWidget(name: 'My Reviews', icon: MyAppIcon.reviews, sizename: 188,),
+            MenuWidget(name: 'My Reviews', icon: MyAppIcon.reviews, sizename: 188, colors: Colors.black,),
             SizedBox(
               height: 15,
             ),
-            ProfileWidget(name: 'My Profile', icon: MyAppIcon.profilecircle, sizename: 198,),
+            MenuWidget(name: 'My Profile', icon: MyAppIcon.profilecircle, sizename: 198, colors: Colors.black,),
             SizedBox(
               height: 15,
             ),
-            ProfileWidget(name: 'Settings', icon: MyAppIcon.settings, sizename: 210,),
+            MenuWidget(name: 'Settings', icon: MyAppIcon.settings, sizename: 210, colors: Colors.black,),
             SizedBox(
               height: 20,
             ),
@@ -313,15 +313,15 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 14,
             ),
-            ProfileWidget(name: 'Customer\nService', icon: MyAppIcon.headphone, sizename: 200,),
+            MenuWidget(name: 'Customer\nService', icon: MyAppIcon.headphone, sizename: 200, colors: Colors.black,),
             SizedBox(
               height: 15,
             ),
-            ProfileWidget(name: 'Return Policy', icon: MyAppIcon.returnn, sizename: 176,),
+            MenuWidget(name: 'Return Policy', icon: MyAppIcon.returnn, sizename: 176, colors: Colors.black,),
             SizedBox(
               height: 15,
             ),
-            ProfileWidget(name: 'More', icon: MyAppIcon.more, sizename: 226,),
+            MenuWidget(name: 'More', icon: MyAppIcon.more, sizename: 226, colors: Colors.black,),
             SizedBox(
               height: 20,
             ),
@@ -344,11 +344,11 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 14,
             ),
-            ProfileWidget(name: 'Policies\n& Licences', icon: MyAppIcon.receipt, sizename: 194,),
+            MenuWidget(name: 'Policies\n& Licences', icon: MyAppIcon.receipt, sizename: 194, colors: Colors.black,),
             SizedBox(
               height: 15,
             ),
-            ProfileWidget(name: 'Browse FAQs', icon: MyAppIcon.ques, sizename: 180,),
+            MenuWidget(name: 'Browse FAQs', icon: MyAppIcon.ques, sizename: 180, colors: Colors.black,),
             SizedBox(
               height: 30,
             ),

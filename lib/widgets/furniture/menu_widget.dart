@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 import '../../constants/My_app_icon.dart';
 
-class ProfileWidget extends StatelessWidget {
+class MenuWidget extends StatelessWidget {
   final String name;
   final IconData icon;
   final double sizename;
+  final Color colors;
 
-  const ProfileWidget({super.key, required this.name, required this.icon, required this.sizename});
+  const MenuWidget({super.key, required this.name, required this.icon, required this.sizename, required this.colors});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class ProfileWidget extends StatelessWidget {
             padding: const EdgeInsets.only(right: 2.0),
             child: Icon(
               MyAppIcon.backop,
-              color: Colors.black,
+              color: colors,
               size: 19,
             ),
           ),
