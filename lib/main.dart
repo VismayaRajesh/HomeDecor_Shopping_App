@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homedecor_shopping_app/view/screen/categories_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/landing2_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/landing_screen.dart';
+import 'package:homedecor_shopping_app/view/screen/menu_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/notification_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/profile_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/wishlist_screen.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  Landing2Screen(),
+      home:  MenuScreen(),
     );
   }
 }

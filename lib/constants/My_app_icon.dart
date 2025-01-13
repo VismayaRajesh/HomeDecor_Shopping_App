@@ -30,4 +30,5 @@ class MyAppIcon{
   static const IconData category = Icons.category_outlined;
   static const IconData home = Icons.home_outlined;
   static const IconData notification = Icons.notifications_outlined;
+  static const IconData outlinedstar = Icons.star_border_outlined;
 }
