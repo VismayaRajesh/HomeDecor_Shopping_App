@@ -31,4 +31,7 @@ class MyAppIcon{
   static const IconData home = Icons.home_outlined;
   static const IconData notification = Icons.notifications_outlined;
   static const IconData outlinedstar = Icons.star_border_outlined;
+  static const IconData lock = Icons.lock_outline;
+  static const IconData passwordshow = Icons.remove_red_eye;
+  static const IconData passordclose = Icons.visibility_off_outlined;
 }

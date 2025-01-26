@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
-import 'package:homedecor_shopping_app/view/view_model/furniture_bloc/furniturebloc_bloc.dart';
-import 'package:homedecor_shopping_app/view/view_model/furniture_bloc/furniturebloc_bloc.dart';
+
 
 import '../../constants/My_app_icon.dart';
 import '../../widgets/backbutton.dart';
 import '../../widgets/furniture/categories_widget.dart';
+import '../view_model/categories_bloc/furniturebloc_bloc.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});

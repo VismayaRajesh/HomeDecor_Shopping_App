@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../constants/My_app_icon.dart';
 import '../../widgets/furniture/menu_widget.dart';
+import 'homepage_screen.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -28,7 +29,12 @@ class MenuScreen extends StatelessWidget {
             shape: BoxShape.circle,
             color: Color.fromRGBO(153, 133, 88, 1)
         ),
-        child: Icon(MyAppIcon.close,color: CupertinoColors.white,size: 18,),
+        child: InkWell(child: Icon(MyAppIcon.close,color: CupertinoColors.white,size: 18) ,
+        onTap: (){
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) {
+            return HomepageScreen();
+          }));
+        }),
       ),
     )
         ],
