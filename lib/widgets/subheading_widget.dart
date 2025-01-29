@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:homedecor_shopping_app/view/screen/categories_screen.dart';
 
 class SubheadingWidget extends StatelessWidget {
   final String name;
@@ -18,9 +20,16 @@ class SubheadingWidget extends StatelessWidget {
             SizedBox(
               width: 160,
             ),
-            Text(
-              "view all",
-              style: TextStyle(fontSize: 16),
+            InkWell(
+              child: Text(
+                "view all",
+                style: TextStyle(fontSize: 16),
+              ),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                  return CategoriesScreen();
+                }));
+              },
             )
           ],
         ),

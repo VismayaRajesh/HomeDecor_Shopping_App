@@ -3,6 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
+import 'package:homedecor_shopping_app/view/screen/Sofa_screen.dart';
+import 'package:homedecor_shopping_app/view/screen/bottomnav_screen.dart';
+import 'package:homedecor_shopping_app/view/screen/homescreen.dart';
 
 
 import '../../constants/My_app_icon.dart';
@@ -19,7 +22,12 @@ class CategoriesScreen extends StatelessWidget {
       backgroundColor: CupertinoColors.white,
       appBar: AppBar(
         backgroundColor: CupertinoColors.white,
-        leading: BackbuttonWidget(),
+        leading: InkWell(child: BackbuttonWidget(),
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+              return BottomnavScreen();
+            }));
+          },),
         centerTitle: true,
         title: Text(
           "Categories",
@@ -52,15 +60,22 @@ class CategoriesScreen extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 20.0),
                   // Space between items
-                  child: CategoriesWidget(
-                    image: CachedNetworkImage(imageUrl: category.imageUrl),
-                    title: Text(
-                      category.title,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
-                    ), dynamicSpace: category.space,
+                  child: InkWell(
+                    child: CategoriesWidget(
+                      image: CachedNetworkImage(imageUrl: category.imageUrl),
+                      title: Text(
+                        category.title,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500),
+                      ), dynamicSpace: category.space,
+                    ),
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                        return SofaScreen();
+                      }));
+                    },
                   ),
                 );
               },

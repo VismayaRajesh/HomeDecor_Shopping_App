@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:homedecor_shopping_app/view/screen/cart_screen.dart';
+import 'package:homedecor_shopping_app/view/screen/details_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/menu_screen.dart';
 
 import '../../constants/My_app_icon.dart';
@@ -17,6 +19,7 @@ class Homescreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
           toolbarHeight: 65,
           iconTheme: const IconThemeData(color: Colors.black),
@@ -58,7 +61,9 @@ class Homescreen extends StatelessWidget {
                 icon: const Icon(Icons.shopping_cart_outlined,
                     color: Colors.black, size: 28),
                 onPressed: () {
-                  // Action for notifications icon
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                    return CartScreen();
+                  }));
                 },
               ),
             ),
@@ -180,7 +185,12 @@ class Homescreen extends StatelessWidget {
               ),
               const SizedBox(height: 18),
               const SubheadingWidget(name: "New Arrivals      "),
-              ProductListWidget(count: 2),
+              InkWell(child: ProductListWidget(count: 2),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                  return DetailPage();
+                }));
+              },),
               const SubheadingWidget(name: "Popular              "),
               ProductListWidget(count: 2),
               const SubheadingWidget(name: "Recently Added", ),

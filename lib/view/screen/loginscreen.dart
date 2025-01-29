@@ -6,7 +6,7 @@ import 'package:homedecor_shopping_app/view/screen/signup.dart';
 import 'package:homedecor_shopping_app/widgets/sociallogin_widget.dart';
 
 import '../../widgets/logintext_widget.dart';
-import 'homepage_screen.dart';
+import 'bottomnav_screen.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void _navigateToHomePage() {
     if (_formKey.currentState!.validate()) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomepageScreen()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomnavScreen()));
     }
   }
 

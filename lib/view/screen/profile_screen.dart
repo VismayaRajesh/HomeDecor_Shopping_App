@@ -5,6 +5,7 @@ import 'package:homedecor_shopping_app/constants/My_app_icon.dart';
 import '../../widgets/backbutton.dart';
 import '../../widgets/furniture/Logoutbtn_widget.dart';
 import '../../widgets/furniture/menu_widget.dart';
+import 'menu_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -15,7 +16,12 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: CupertinoColors.white,
         appBar: AppBar(
           backgroundColor: CupertinoColors.white,
-          leading: BackbuttonWidget(),
+          leading:InkWell(child: BackbuttonWidget(),
+            onTap: (){
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) {
+                return MenuScreen();
+              }) );
+            },),
           centerTitle: true,
           title: Text(
             "Profile",

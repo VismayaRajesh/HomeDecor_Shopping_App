@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:homedecor_shopping_app/widgets/furniture/notification_widget.dart';
 
 import '../../widgets/backbutton.dart';
+import 'menu_screen.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -13,7 +14,12 @@ class NotificationScreen extends StatelessWidget {
       backgroundColor: CupertinoColors.white,
       appBar: AppBar(
         backgroundColor: CupertinoColors.white,
-        leading: BackbuttonWidget(),
+        leading: InkWell(child: BackbuttonWidget(),
+          onTap: (){
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) {
+              return MenuScreen();
+            }) );
+          },),
         centerTitle: true,
         title: Text("Notification", style: TextStyle(color: Colors.black, fontSize: 19, fontWeight: FontWeight.w500),),
       ),

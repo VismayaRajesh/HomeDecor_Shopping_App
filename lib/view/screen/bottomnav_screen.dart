@@ -10,14 +10,14 @@ import 'package:homedecor_shopping_app/widgets/customContainer_widget.dart';
 import 'package:homedecor_shopping_app/widgets/furniture/productList_widget.dart';
 import 'package:homedecor_shopping_app/widgets/subheading_widget.dart';
 
-class HomepageScreen extends StatefulWidget {
-  const HomepageScreen({super.key});
+class BottomnavScreen extends StatefulWidget {
+  const BottomnavScreen({super.key});
 
   @override
-  State<HomepageScreen> createState() => _HomepageScreenState();
+  State<BottomnavScreen> createState() => _HomepageScreenState();
 }
 
-class _HomepageScreenState extends State<HomepageScreen> {
+class _HomepageScreenState extends State<BottomnavScreen> {
   int _selectedIndex = 0;
 
   List<Widget>pages = [
