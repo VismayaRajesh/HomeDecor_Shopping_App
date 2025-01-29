@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:homedecor_shopping_app/view/screen/Sofa_screen.dart';
+import 'package:homedecor_shopping_app/view/screen/address_screen.dart';
+import 'package:homedecor_shopping_app/view/screen/cart_screen.dart';
+import 'package:homedecor_shopping_app/view/screen/details_screen.dart';
+import 'package:homedecor_shopping_app/view/screen/myorder_screen.dart';
+import 'package:homedecor_shopping_app/view/screen/payment_screen.dart';
 import 'package:homedecor_shopping_app/view/view_model/categories_bloc/furniturebloc_bloc.dart';
 import 'package:homedecor_shopping_app/view/view_model/landing_bloc/landingbloc_bloc.dart';
 import 'package:homedecor_shopping_app/view/screen/splash_screen.dart';
@@ -30,7 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  SplashScreen(),
+      home: SplashScreen(),
     );
   }
 }

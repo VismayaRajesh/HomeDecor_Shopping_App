@@ -34,4 +34,7 @@ class MyAppIcon{
   static const IconData lock = Icons.lock_outline;
   static const IconData passwordshow = Icons.remove_red_eye;
   static const IconData passordclose = Icons.visibility_off_outlined;
+  static const IconData share = Icons.share_outlined;
+  static const IconData bag = Icons.shopping_bag_outlined;
+  static const IconData work = Icons.work_outline_outlined;
 }

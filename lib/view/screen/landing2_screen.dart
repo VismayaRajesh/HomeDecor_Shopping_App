@@ -7,7 +7,7 @@ import 'package:homedecor_shopping_app/view/screen/loginscreen.dart';
 import '../../constants/my_app_constants.dart';
 import '../../widgets/Getstarted_widget.dart';
 import '../view_model/landing_bloc/landingbloc_bloc.dart';
-import 'homepage_screen.dart';
+import 'bottomnav_screen.dart';
 import 'homescreen.dart';
 
 class Landing2Screen extends StatelessWidget {

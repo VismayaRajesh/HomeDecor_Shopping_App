@@ -7,6 +7,7 @@ import '../../constants/my_app_constants.dart';
 import '../../widgets/Getstarted_widget.dart';
 import '../view_model/landing_bloc/landingbloc_bloc.dart';
 import 'landing2_screen.dart';
+import 'loginscreen.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -33,7 +34,11 @@ class LandingScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 296.0),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) {
+                    return LoginPage();
+                  }));
+                },
                 child: Text(
                   "Skip",
                   style: TextStyle(
