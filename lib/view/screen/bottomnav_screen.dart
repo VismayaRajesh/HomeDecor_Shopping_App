@@ -6,12 +6,11 @@ import 'package:homedecor_shopping_app/view/screen/homescreen.dart';
 import 'package:homedecor_shopping_app/view/screen/notification_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/profile_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/wishlist_screen.dart';
-import 'package:homedecor_shopping_app/widgets/customContainer_widget.dart';
-import 'package:homedecor_shopping_app/widgets/furniture/productList_widget.dart';
-import 'package:homedecor_shopping_app/widgets/subheading_widget.dart';
 
 class BottomnavScreen extends StatefulWidget {
-  const BottomnavScreen({super.key});
+  final String? userName;// Accept userName parameter
+  final String? emuserName;
+  const BottomnavScreen({super.key,  this.userName, this.emuserName});
 
   @override
   State<BottomnavScreen> createState() => _HomepageScreenState();
@@ -19,14 +18,19 @@ class BottomnavScreen extends StatefulWidget {
 
 class _HomepageScreenState extends State<BottomnavScreen> {
   int _selectedIndex = 0;
+  late List<Widget> pages; // Declare pages as a late variable
 
-  List<Widget>pages = [
-    Homescreen(),
-    CategoriesScreen(),
-    WishlistScreen(),
-    NotificationScreen(),
-    ProfileScreen()
-  ];
+  @override
+  void initState() {
+    super.initState();
+    pages = [
+      Homescreen(userName: widget.userName ?? 'Guest',emuserName: widget.emuserName ?? 'Guest'), // Pass userName here
+      CategoriesScreen(userName: widget.userName ?? 'Guest', emuserName: widget.emuserName ?? 'Guest'),
+      WishlistScreen(),
+      NotificationScreen(),
+      ProfileScreen(userName: widget.userName ?? 'Guest', emuserName: widget.emuserName ?? 'Guest'),
+    ];
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -64,7 +68,7 @@ class _HomepageScreenState extends State<BottomnavScreen> {
             label: '',
           ),
         ],
-        selectedItemColor: Color.fromRGBO(153, 133, 88, 1),
+        selectedItemColor: const Color.fromRGBO(153, 133, 88, 1),
         unselectedItemColor: Colors.black,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
@@ -76,20 +80,17 @@ class _HomepageScreenState extends State<BottomnavScreen> {
   Widget _buildIcon(IconData iconData, int index) {
     return _selectedIndex == index
         ? Container(
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(153, 133, 88, 1),
-        // Background color for selected icon
+      padding: const EdgeInsets.all(8),
+      decoration: const BoxDecoration(
+        color: Color.fromRGBO(153, 133, 88, 1), // Background color for selected icon
         shape: BoxShape.circle,
       ),
       child: Icon(
         iconData,
-        color: Colors.white, size: 28, // Color for selected icon
+        color: Colors.white,
+        size: 28, // Color for selected icon
       ),
     )
-        : Icon(iconData,size: 28,); // Unselected icon
+        : Icon(iconData, size: 28); // Unselected icon
   }
 }
-
-
-

@@ -12,6 +12,8 @@ import '../../widgets/furniture/footer_widget.dart';
 import '../../widgets/stepper_widget.dart';
 
 class CartScreen extends StatelessWidget {
+  final String? userName;
+  const CartScreen({super.key, this.userName});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,7 @@ class CartScreen extends StatelessWidget {
         leading: InkWell(child: BackbuttonWidget(),
           onTap: (){
             Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-              return BottomnavScreen();
+              return BottomnavScreen(userName: userName);
             }));
           },),
         centerTitle: true,
@@ -183,7 +185,7 @@ class CartScreen extends StatelessWidget {
                               ElevatedButton(
                                 onPressed: () {
                                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-                                    return AddressScreen();
+                                    return AddressScreen(userName: userName);
                                   }));
                                 },
                                 style: ElevatedButton.styleFrom(backgroundColor: Color.fromRGBO(153, 133, 88, 1),

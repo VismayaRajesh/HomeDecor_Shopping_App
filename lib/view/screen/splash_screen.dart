@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
-import 'package:homedecor_shopping_app/view/screen/landing_screen.dart';// Import the landing page
+import 'package:homedecor_shopping_app/view/screen/landing_screen.dart';
+
+import '../../model/Data_Model/productData.dart';// Import the landing page
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+  final ProductModel? product;
+  const SplashScreen({super.key, this.product});
 
   @override
   Widget build(BuildContext context) {

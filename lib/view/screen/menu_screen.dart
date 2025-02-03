@@ -1,16 +1,31 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:homedecor_shopping_app/view/screen/loginscreen.dart';
 import 'package:homedecor_shopping_app/view/screen/myorder_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/notification_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/profile_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/wishlist_screen.dart';
 
 import '../../constants/My_app_icon.dart';
+import '../../model/Data_Model/productData.dart';
 import '../../widgets/furniture/menu_widget.dart';
 import 'bottomnav_screen.dart';
 
 class MenuScreen extends StatelessWidget {
-  const MenuScreen({super.key});
+  final String? userName;
+  final String? emuserName;
+  const MenuScreen({super.key, this.userName, this.emuserName});
+
+  Future<void> signOut() async {
+    try {
+      await GoogleSignIn().signOut();
+      await FirebaseAuth.instance.signOut();
+    } catch (e) {
+      print("Error signing out: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +55,7 @@ class MenuScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (BuildContext context) {
-                      return BottomnavScreen();
+                      return BottomnavScreen(userName: userName);
                     }));
                   }),
             ),
@@ -61,17 +76,16 @@ class MenuScreen extends StatelessWidget {
               child: CircleAvatar(
                 radius: 50,
                 backgroundColor: CupertinoColors.white,
-                child: Text(
-                  "AM",
+                child: Text(userName![0].toUpperCase(),
                   style: TextStyle(
                       color: Color.fromRGBO(144, 57, 19, 1),
                       fontWeight: FontWeight.w600,
-                      fontSize: 18),
+                      fontSize: 20),
                 ),
               ),
             ),
             title: Text(
-              "Anjali M",
+              userName ?? 'guest',
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 15,
@@ -114,7 +128,7 @@ class MenuScreen extends StatelessWidget {
             onTap: (){
               Navigator.push(context,
                   MaterialPageRoute(builder: (BuildContext context) {
-                    return ProfileScreen();
+                    return ProfileScreen(userName: userName ?? 'Guest', emuserName: emuserName ?? 'Guest',);
                   }));
             },
           ),
@@ -172,9 +186,27 @@ class MenuScreen extends StatelessWidget {
               name: 'Settings',
               icon: MyAppIcon.settings,
               sizename: 214,
-              colors: Color.fromRGBO(144, 57, 19, 1))
+              colors: Color.fromRGBO(144, 57, 19, 1)),
+          SizedBox(
+            height: 14,
+          ),
+          InkWell(
+            onTap: () async {
+                await signOut();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+            },
+            child: MenuWidget(
+                name: 'LogOut',
+                icon: Icons.logout,
+                sizename: 214,
+                colors: Color.fromRGBO(144, 57, 19, 1)),
+          ),
         ],
       ),
     );
   }
 }
+

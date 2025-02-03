@@ -8,7 +8,9 @@ import '../../widgets/furniture/menu_widget.dart';
 import 'menu_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  final String userName;
+  final String emuserName;
+  const ProfileScreen({super.key, required this.userName, required this.emuserName});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +20,7 @@ class ProfileScreen extends StatelessWidget {
           backgroundColor: CupertinoColors.white,
           leading:InkWell(child: BackbuttonWidget(),
             onTap: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) {
-                return MenuScreen();
-              }) );
+              Navigator.pop(context);
             },),
           centerTitle: true,
           title: Text(
@@ -43,16 +43,16 @@ class ProfileScreen extends StatelessWidget {
                   radius: 50,
                   backgroundColor: CupertinoColors.white,
                   child: Text(
-                    "AM",
+                    userName[0].toUpperCase(),
                     style: TextStyle(
                         color: Color.fromRGBO(144, 57, 19, 1),
                         fontWeight: FontWeight.w600,
-                        fontSize: 18),
+                        fontSize: 20),
                   ),
                 ),
               ),
               title: Text(
-                "Anjali M",
+                userName,
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,

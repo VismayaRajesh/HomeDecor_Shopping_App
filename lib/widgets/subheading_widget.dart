@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:homedecor_shopping_app/view/screen/categories_screen.dart';
 
 class SubheadingWidget extends StatelessWidget {
+  final String? userName;
+  final String? emuserName;
   final String name;
-  const SubheadingWidget({super.key, required this.name});
+  const SubheadingWidget({super.key, required this.name, this.userName, this.emuserName});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class SubheadingWidget extends StatelessWidget {
               ),
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-                  return CategoriesScreen();
+                  return CategoriesScreen(userName: userName);
                 }));
               },
             )

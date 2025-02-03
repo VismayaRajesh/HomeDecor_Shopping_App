@@ -2,10 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
 import 'package:homedecor_shopping_app/view/screen/Sofa_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/bottomnav_screen.dart';
-import 'package:homedecor_shopping_app/view/screen/homescreen.dart';
 
 
 import '../../constants/My_app_icon.dart';
@@ -14,7 +12,9 @@ import '../../widgets/furniture/categories_widget.dart';
 import '../view_model/categories_bloc/furniturebloc_bloc.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  final String? userName;
+  final String? emuserName;
+  const CategoriesScreen({super.key, this.userName, this.emuserName});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class CategoriesScreen extends StatelessWidget {
         leading: InkWell(child: BackbuttonWidget(),
           onTap: (){
             Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-              return BottomnavScreen();
+              return BottomnavScreen(userName : userName);
             }));
           },),
         centerTitle: true,
@@ -73,7 +73,7 @@ class CategoriesScreen extends StatelessWidget {
                     ),
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-                        return SofaScreen();
+                        return SofaScreen(userName : userName);
                       }));
                     },
                   ),

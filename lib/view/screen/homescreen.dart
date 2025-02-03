@@ -13,7 +13,9 @@ import '../../widgets/subheading_widget.dart';
 import 'package:flutter/material.dart';
 
 class Homescreen extends StatelessWidget {
-  const Homescreen({super.key});
+  final String userName;
+  final String emuserName;
+   Homescreen({super.key, required this.userName, required this.emuserName});
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +27,14 @@ class Homescreen extends StatelessWidget {
           iconTheme: const IconThemeData(color: Colors.black),
           title: Row(
             children: [
-              const CircleAvatar(
-                child: Text("A"),
+              CircleAvatar(
+                child: Text(userName[0].toUpperCase()),
               ),
               const SizedBox(width: 8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
                     'Hello',
                     style: TextStyle(
@@ -43,8 +45,8 @@ class Homescreen extends StatelessWidget {
                   ),
                   SizedBox(height: 2),
                   Text(
-                    "Anjali",
-                    style: TextStyle(
+                    userName,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
                       fontSize: 12,
@@ -62,7 +64,7 @@ class Homescreen extends StatelessWidget {
                     color: Colors.black, size: 28),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-                    return CartScreen();
+                    return CartScreen(userName: userName);
                   }));
                 },
               ),
@@ -72,8 +74,8 @@ class Homescreen extends StatelessWidget {
               child: IconButton(
                 icon: const Icon(Icons.menu, color: Colors.black, size: 28),
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) {
-                    return MenuScreen();
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                    return MenuScreen(userName: userName);
                   }));
                 },
               ),
@@ -155,7 +157,7 @@ class Homescreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 22),
-              const SubheadingWidget(name: "Categories          "),
+              SubheadingWidget(name: "Categories          ",userName: userName),
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(left: 12.0),
@@ -184,19 +186,19 @@ class Homescreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 18),
-              const SubheadingWidget(name: "New Arrivals      "),
-              InkWell(child: ProductListWidget(count: 2),
+              SubheadingWidget(name: "New Arrivals      ",userName: userName),
+              InkWell(child: ProductListWidget(),
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
                   return DetailPage();
                 }));
               },),
-              const SubheadingWidget(name: "Popular              "),
-              ProductListWidget(count: 2),
-              const SubheadingWidget(name: "Recently Added", ),
-              ProductListWidget(count: 2),
-              const SubheadingWidget(name: "Top Selling        ", ),
-              ProductListWidget(count: 2),
+              SubheadingWidget(name: "Popular              ",userName: userName),
+              ProductListWidget(),
+              SubheadingWidget(name: "Recently Added",userName: userName ),
+              ProductListWidget(),
+              SubheadingWidget(name: "Top Selling        ",userName: userName ),
+              ProductListWidget(),
               SizedBox(height: 6,)
             ],
           ),

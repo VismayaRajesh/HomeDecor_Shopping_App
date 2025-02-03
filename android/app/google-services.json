@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "57724606697",
+    "project_id": "homedecor-2533b",
+    "storage_bucket": "homedecor-2533b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57724606697:android:5cfa2ad54bb8afd84c7878",
+        "android_client_info": {
+          "package_name": "com.example.homedecor_shopping_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1-yHNkYbvW_gEFLtDmatHOc36Lng85-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

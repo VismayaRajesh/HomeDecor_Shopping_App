@@ -1,13 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:homedecor_shopping_app/model/Data_Model/wishlistData.dart';
 
 import '../constants/My_app_icon.dart';
+import '../model/Data_Model/productData.dart';
 
 class RatingWidget extends StatelessWidget {
-  const RatingWidget({super.key});
+  final ProductModel? product;
+  final String? rating;
+  const RatingWidget({super.key, this.product, this.rating});
 
   @override
   Widget build(BuildContext context) {
+    String displayRating = rating ?? product?.rating ?? 'No rating';
     return Container(
       height: 20,
       width: 46,
@@ -22,7 +27,7 @@ class RatingWidget extends StatelessWidget {
             color: Colors.yellow,
             size: 18,
           ),
-          Text("4.3", style: TextStyle(fontSize: 12),)
+          Text(displayRating, style: TextStyle(fontSize: 12),)
         ],
       ),
     );

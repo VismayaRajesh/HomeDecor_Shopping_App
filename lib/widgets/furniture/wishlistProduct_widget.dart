@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:homedecor_shopping_app/model/Data_Model/wishlistData.dart'; // Update the import
 
 import '../../constants/My_app_icon.dart';
 import '../../constants/my_app_constants.dart';
@@ -7,7 +8,9 @@ import '../cached_image.dart';
 import '../rating_widget.dart';
 
 class WishlistproductWidget extends StatelessWidget {
-  const WishlistproductWidget({super.key});
+  final List<WishlistModel> wishlist; // Add the wishlist data as a parameter
+
+  const WishlistproductWidget({super.key, required this.wishlist});
 
   @override
   Widget build(BuildContext context) {
@@ -15,24 +18,24 @@ class WishlistproductWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 8.0, top: 5.0, bottom: 8.0, left: 8),
       child: LayoutBuilder(
-        // Ensure size constraints are respected
         builder: (context, constraints) {
           return GridView.builder(
-            physics: const NeverScrollableScrollPhysics(), // Disable grid scrolling
-            shrinkWrap: true, // Fit content within the parent scroll
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 5,
               mainAxisSpacing: 8,
               childAspectRatio: 0.7,
             ),
-            itemCount: 8,
+            itemCount: wishlist.length, // Use the dynamic length
             itemBuilder: (BuildContext context, int index) {
+              final item = wishlist[index]; // Get the item at the current index
               return Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Container(
-                  width: size.width * 0.48, // Exact width
-                  height: size.height * 0.38, // Exact height
+                  width: size.width * 0.48,
+                  height: size.height * 0.38,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(15),
@@ -50,11 +53,11 @@ class WishlistproductWidget extends StatelessWidget {
                       Stack(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 9.0,right:9.0, top: 9.0,bottom: 5.0),
+                            padding: const EdgeInsets.only(left: 9.0, right: 9.0, top: 9.0, bottom: 5.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(12),
                               child: CachedImage(
-                                imgurl: MyAppConstants.Productimage,
+                                imgurl: item.imageUrl, // Use dynamic image URL
                               ),
                             ),
                           ),
@@ -75,10 +78,10 @@ class WishlistproductWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const Positioned(
+                          Positioned(
                             bottom: 15,
                             left: 15,
-                            child: RatingWidget(),
+                            child: RatingWidget(rating : item.rating), // Pass dynamic rating
                           ),
                         ],
                       ),
@@ -89,20 +92,20 @@ class WishlistproductWidget extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                const Text(
-                                  "My art design",
+                                Text(
+                                  item.brand, // Use dynamic brand name
                                   style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 11,
-                                    color: Colors.grey
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 11,
+                                      color: Colors.grey
                                   ),
                                 ),
-                                SizedBox(width: 40,),
-                                Text("\$95",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700,color: Color.fromRGBO(144, 57, 19, 1)),),
+                                SizedBox(width: 50),
+                                Text("\$${item.price}", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Color.fromRGBO(144, 57, 19, 1))),
                               ],
                             ),
-                            const Text(
-                              "Eames single chair",
+                            Text(
+                              item.name, // Use dynamic product name
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
@@ -115,8 +118,8 @@ class WishlistproductWidget extends StatelessWidget {
                       ),
                       const Spacer(),
                       Container(
-                        width: constraints.maxWidth, // Ensures full card width
-                        height: 28, // Increased height for better visibility
+                        width: constraints.maxWidth,
+                        height: 28,
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(153, 133, 88, 1),
                           borderRadius: const BorderRadius.only(
@@ -126,10 +129,10 @@ class WishlistproductWidget extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            SizedBox(width: 22,),
-                            Text("Move to cart", style: TextStyle(color: CupertinoColors.white, fontWeight: FontWeight.w500, fontSize: 15),),
-                            SizedBox(width: 8,),
-                            Icon(MyAppIcon.cart,color: CupertinoColors.white,size: 20,)
+                            SizedBox(width: 22),
+                            Text("Move to cart", style: TextStyle(color: CupertinoColors.white, fontWeight: FontWeight.w500, fontSize: 15)),
+                            SizedBox(width: 8),
+                            Icon(MyAppIcon.cart, color: CupertinoColors.white, size: 20)
                           ],
                         ),
                       ),
