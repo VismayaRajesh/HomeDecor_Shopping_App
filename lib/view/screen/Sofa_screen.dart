@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:homedecor_shopping_app/view/screen/categories_screen.dart';
 import 'package:homedecor_shopping_app/widgets/backbutton.dart';
 import 'package:homedecor_shopping_app/widgets/furniture/productList_widget.dart';
+import 'package:homedecor_shopping_app/widgets/furniture/sofaList_widget.dart';
 
 import '../../constants/My_app_icon.dart';
 
 class SofaScreen extends StatelessWidget {
-  const SofaScreen({super.key});
+  final String? userName;
+  final String? emuserName;
+  const SofaScreen({super.key, this.userName, this.emuserName});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,9 @@ class SofaScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         leading: InkWell(child: BackbuttonWidget(),
         onTap: (){
-          Navigator.pop(context);
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+            return CategoriesScreen(userName : userName);
+          }) );
         },),
         titleSpacing: 0,
         title: Column(
@@ -60,7 +65,7 @@ class SofaScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(child: ProductListWidget(count: 20)),
+      body: SingleChildScrollView(child: SofalistWidget()),
     );
   }
 }

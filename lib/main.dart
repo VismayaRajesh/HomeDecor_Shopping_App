@@ -1,16 +1,20 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homedecor_shopping_app/view/screen/Sofa_screen.dart';
-import 'package:homedecor_shopping_app/view/screen/address_screen.dart';
-import 'package:homedecor_shopping_app/view/screen/cart_screen.dart';
-import 'package:homedecor_shopping_app/view/screen/details_screen.dart';
-import 'package:homedecor_shopping_app/view/screen/myorder_screen.dart';
-import 'package:homedecor_shopping_app/view/screen/payment_screen.dart';
 import 'package:homedecor_shopping_app/view/view_model/categories_bloc/furniturebloc_bloc.dart';
+import 'package:homedecor_shopping_app/view/view_model/homepdct_bloc/homepdtbloc_bloc.dart';
+import 'package:homedecor_shopping_app/view/view_model/homepdct_bloc/homepdtbloc_event.dart';
 import 'package:homedecor_shopping_app/view/view_model/landing_bloc/landingbloc_bloc.dart';
 import 'package:homedecor_shopping_app/view/screen/splash_screen.dart';
+import 'package:homedecor_shopping_app/view/view_model/wishlistpdct_bloc/wishlistpdctbloc_bloc.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     MultiBlocProvider(
       providers: [
@@ -22,6 +26,10 @@ void main() {
         BlocProvider<LandingblocBloc>(
           create: (BuildContext context) => LandingblocBloc(),
         ),
+        BlocProvider(
+         create: (BuildContext context) => ProductBloc()..add(LoadProducts()),),
+        BlocProvider(
+          create: (BuildContext context) => WishlistBloc()..add(LoadPdct()),)
       ],
       child: MyApp(),
     ),

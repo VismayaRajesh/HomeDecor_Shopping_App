@@ -7,7 +7,8 @@ import '../../widgets/backbutton.dart';
 import '../../widgets/stepper_widget.dart';
 
 class AddressScreen extends StatelessWidget {
-  const AddressScreen({super.key});
+  final String? userName;
+  const AddressScreen({super.key, this.userName});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class AddressScreen extends StatelessWidget {
         leading: InkWell(child: BackbuttonWidget(),
           onTap: (){
             Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-              return CartScreen();
+              return CartScreen(userName: userName);
             }));
           },),
         centerTitle: true,
@@ -64,7 +65,7 @@ class AddressScreen extends StatelessWidget {
             AddressCard(
               icon: MyAppIcon.home,
               title: "Home",
-              name: "Anjali M",
+              name: userName ?? 'Guest',
               address:
                   "Floral House, 123 NW Bobcat Lane\nSt. Robert, MO 645637",
               mobile: "9876543890",
@@ -73,7 +74,7 @@ class AddressScreen extends StatelessWidget {
             AddressCard(
               icon: MyAppIcon.work,
               title: "Work",
-              name: "Anjali M",
+              name: userName ?? 'Guest',
               address:
                   "TechInnovation, 45 NW Bobcat Lane\nSt. Georgia, MO 645637",
               mobile: "9876543890",
@@ -83,7 +84,7 @@ class AddressScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-                return PaymentScreen();
+                return PaymentScreen(userName: userName);
               }));
             },
             style: ElevatedButton.styleFrom(

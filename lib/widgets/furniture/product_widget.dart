@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:homedecor_shopping_app/constants/My_app_icon.dart';
 import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
+import 'package:homedecor_shopping_app/model/Data_Model/productData.dart';
 import 'package:homedecor_shopping_app/widgets/cached_image.dart';
 import 'package:homedecor_shopping_app/widgets/rating_widget.dart';
 
 class ProductWidget extends StatelessWidget {
-  const ProductWidget({super.key});
+  final ProductModel product;
+  const ProductWidget({super.key, required this.product,});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class ProductWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(9.0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: CachedImage(imgurl: MyAppConstants.Productimage),
+                  child: CachedImage(imgurl: product.imageUrl),
                 ),
               ),
               Positioned(
@@ -56,7 +58,7 @@ class ProductWidget extends StatelessWidget {
               Positioned(
                 bottom: 15,
                 left: 15,
-                child: RatingWidget()
+                child: RatingWidget(product: product,)
               ),
             ],
           ),
@@ -67,19 +69,19 @@ class ProductWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Brown Armless Sofa",
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
+                  Text(
+                    product.name,
+                    style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
                   ),
                   const SizedBox(height: 2),
-                  const Text(
-                    "My site",
+                   Text(
+                    product.brand,
                     style: TextStyle(fontSize: 10, fontWeight: FontWeight.w400, color: Colors.black),
                   ),
                   Row(
                     children: [
-                      const Text(
-                        "Price \$156.00",
+                       Text(
+                        "Price \$${product.price}",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 12,

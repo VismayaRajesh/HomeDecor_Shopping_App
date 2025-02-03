@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:homedecor_shopping_app/model/Data_Model/productData.dart';
 
 import '../../constants/my_app_constants.dart';
 import '../../widgets/logintext_widget.dart';
@@ -16,6 +18,9 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -25,6 +30,38 @@ class _SignupState extends State<Signup> {
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
   bool _isPrivacyAccepted = false; // Track checkbox state
+
+  Future<void> signUpWithEmailPassword() async {
+    try {
+      final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+
+      User? user = userCredential.user;
+      if (user != null) {
+        await user.updateDisplayName(_fullNameController.text.trim()); // Save Name
+        await user.reload();
+        user = _auth.currentUser; // Refresh user data
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Signed Up successfully as ${user?.email}'),
+            duration: Duration(seconds: 3),
+          ),
+        );
+
+        _navigateToLogin();
+      }
+    } catch (e) {
+      print('Error during sign-up: $e');
+    }
+  }
+
+  void _navigateToLogin() {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+
 
   void _togglePasswordVisibility() {
     setState(() {
@@ -36,15 +73,6 @@ class _SignupState extends State<Signup> {
     setState(() {
       _obscureConfirmPassword = !_obscureConfirmPassword;
     });
-  }
-
-  void _navigateToLogin(BuildContext context) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => LoginPage(), // Ensure LoginPage is implemented.
-      ),
-    );
   }
 
   @override
@@ -187,9 +215,9 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
                 onPressed: _isPrivacyAccepted
-                    ? () {
+                    ? () async {
                   if (_formKey.currentState!.validate()) {
-                    _navigateToLogin(context);
+                    await signUpWithEmailPassword();
                   }
                 }
                     : null, // Disable button if checkbox not checked
@@ -207,7 +235,7 @@ class _SignupState extends State<Signup> {
                       TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
                   GestureDetector(
                     onTap: () {
-                      _navigateToLogin(context);
+                      _navigateToLogin();
                     },
                     child: const Text(
                       'Log in',

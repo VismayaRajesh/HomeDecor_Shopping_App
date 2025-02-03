@@ -16,9 +16,7 @@ class NotificationScreen extends StatelessWidget {
         backgroundColor: CupertinoColors.white,
         leading: InkWell(child: BackbuttonWidget(),
           onTap: (){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) {
-              return MenuScreen();
-            }) );
+            Navigator.pop(context);
           },),
         centerTitle: true,
         title: Text("Notification", style: TextStyle(color: Colors.black, fontSize: 19, fontWeight: FontWeight.w500),),

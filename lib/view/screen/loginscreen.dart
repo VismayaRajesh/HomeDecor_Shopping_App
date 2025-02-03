@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:homedecor_shopping_app/constants/My_app_icon.dart';
 import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
+import 'package:homedecor_shopping_app/model/Data_Model/productData.dart';
 import 'package:homedecor_shopping_app/view/screen/signup.dart';
 import 'package:homedecor_shopping_app/widgets/sociallogin_widget.dart';
 
@@ -9,26 +12,82 @@ import '../../widgets/logintext_widget.dart';
 import 'bottomnav_screen.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  GoogleSignInAccount? _user;
+
+    Future<GoogleSignInAccount?> signIn() async {
+      try{
+        final GoogleSignInAccount? user = await _googleSignIn.signIn();
+        if(user!=null){
+          setState(() {
+            _user = user;
+          });
+
+          // Navigate to HomeScreen with the user's name
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BottomnavScreen(userName: user.displayName ?? "User"),
+            ),
+          );
+        }
+      }
+      catch(e){
+        print(e);
+      }
+    }
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _obscurePassword = true;
 
+  User? _emuser;
+
+  void _navigateToHomePage() {
+    if (_formKey.currentState!.validate()) {
+      String? emuserName = _emuser?.displayName ?? "User";
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomnavScreen(userName: emuserName)));
+    }
+  }
+
+  Future<void> signInWithEmailPassword() async {
+    try {
+      final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+
+      setState(() {
+        _emuser = userCredential.user;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Logged in successfully as ${_emuser?.email}'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+
+      _navigateToHomePage();
+    } catch (e) {
+      print('Error during sign-in: $e');
+    }
+  }
+
   void _togglePasswordVisibility() {
     setState(() {
       _obscurePassword = !_obscurePassword;
     });
-  }
-
-  void _navigateToHomePage() {
-    if (_formKey.currentState!.validate()) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomnavScreen()));
-    }
   }
 
   void _navigateToSignUpPage() {
@@ -128,7 +187,10 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                onPressed: _navigateToHomePage,
+                onPressed: () async {
+                  await signInWithEmailPassword();
+                  _navigateToHomePage();
+                },
                 child: const Text(
                   'LOG IN',
                   style: TextStyle(color: Colors.white),
@@ -148,8 +210,13 @@ class _LoginPageState extends State<LoginPage> {
                     imageUrl: MyAppConstants.facebook,
                   ),
                   const SizedBox(width: 24),
-                  SocialLoginWidget(
-                    imageUrl: MyAppConstants.google,
+                  InkWell(
+                    onTap: () async {
+                      await signIn();
+                    },
+                    child: SocialLoginWidget(
+                      imageUrl: MyAppConstants.google,
+                    ),
                   ),
                   const SizedBox(width: 24),
                   SocialLoginWidget(imageUrl: MyAppConstants.apple),
