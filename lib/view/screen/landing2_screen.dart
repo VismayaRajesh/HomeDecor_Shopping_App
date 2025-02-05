@@ -2,14 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:homedecor_shopping_app/model/Data_Model/productData.dart';
 import 'package:homedecor_shopping_app/view/screen/loginscreen.dart';
 
 import '../../constants/my_app_constants.dart';
 import '../../widgets/Getstarted_widget.dart';
 import '../view_model/landing_bloc/landingbloc_bloc.dart';
-import 'bottomnav_screen.dart';
-import 'homescreen.dart';
 
 class Landing2Screen extends StatelessWidget {
   const Landing2Screen({super.key});

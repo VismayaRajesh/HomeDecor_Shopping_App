@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../constants/my_app_constants.dart';
-import '../../model/Data_Model/productData.dart';
 import '../../widgets/Getstarted_widget.dart';
 import '../view_model/landing_bloc/landingbloc_bloc.dart';
 import 'landing2_screen.dart';
@@ -17,7 +16,6 @@ class LandingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LandingblocBloc, LandingblocState>(
       listener: (context, state) {
-        // Navigate to Landing2Screen when LandingPage2 state is emitted
         if (state is LandingPage2) {
           print("LandingPage2 state detected");
           Navigator.pushReplacement(

@@ -4,7 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:homedecor_shopping_app/model/Data_Model/productData.dart';
 
 import '../../constants/my_app_constants.dart';
 import '../../widgets/logintext_widget.dart';
@@ -40,7 +39,7 @@ class _SignupState extends State<Signup> {
 
       User? user = userCredential.user;
       if (user != null) {
-        await user.updateDisplayName(_fullNameController.text.trim()); // Save Name
+        await user.updateDisplayName(_fullNameController.text.trim());
         await user.reload();
         user = _auth.currentUser; // Refresh user data
 
@@ -54,6 +53,12 @@ class _SignupState extends State<Signup> {
         _navigateToLogin();
       }
     } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Oops! This email is already registered. Please use a different email or log in.'),
+        duration: Duration(seconds: 3),
+      ),
+      );
       print('Error during sign-up: $e');
     }
   }
@@ -220,7 +225,7 @@ class _SignupState extends State<Signup> {
                     await signUpWithEmailPassword();
                   }
                 }
-                    : null, // Disable button if checkbox not checked
+                    : null,
                 child: const Text(
                   'Sign Up',
                   style: TextStyle(color: Colors.white, fontSize: 16),

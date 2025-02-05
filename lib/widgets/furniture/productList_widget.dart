@@ -18,8 +18,8 @@ class ProductListWidget extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(right: 8.0, top: 5.0, bottom: 8.0, left: 8),
             child: GridView.builder(
-              physics: const NeverScrollableScrollPhysics(), // Disable grid scrolling
-              shrinkWrap: true, // Fit content within the parent scroll
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 5,

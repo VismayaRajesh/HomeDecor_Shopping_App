@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:homedecor_shopping_app/constants/My_app_icon.dart';
 import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
-import 'package:homedecor_shopping_app/model/Data_Model/productData.dart';
 import 'package:homedecor_shopping_app/view/screen/signup.dart';
 import 'package:homedecor_shopping_app/widgets/sociallogin_widget.dart';
 
@@ -31,7 +30,6 @@ class _LoginPageState extends State<LoginPage> {
             _user = user;
           });
 
-          // Navigate to HomeScreen with the user's name
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -81,6 +79,12 @@ class _LoginPageState extends State<LoginPage> {
       _navigateToHomePage();
     } catch (e) {
       print('Error during sign-in: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Oops! Invalid email or password.',style: TextStyle(fontWeight: FontWeight.w500),),
+            duration: Duration(seconds: 1),
+          )
+      );
     }
   }
 
@@ -189,7 +193,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 onPressed: () async {
                   await signInWithEmailPassword();
-                  _navigateToHomePage();
                 },
                 child: const Text(
                   'LOG IN',

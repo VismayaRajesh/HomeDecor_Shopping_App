@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'landingbloc_event.dart';
 part 'landingbloc_state.dart';

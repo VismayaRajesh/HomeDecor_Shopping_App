@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:homedecor_shopping_app/view/screen/diningtable_screen.dart';
 
 import '../../../constants/my_app_constants.dart';
 import '../../../model/Data_Model/furnieData.dart';
+import '../../screen/Sofa_screen.dart';
 
 part 'furniturebloc_event.dart';
 part 'furniturebloc_state.dart';
@@ -15,8 +16,9 @@ class FurnitureblocBloc extends Bloc<FurnitureblocEvent, FurnitureblocState> {
         await Future.delayed(Duration(seconds: 1));
         final categories = [
           Category(
-            title: 'Sofas',
-            imageUrl: MyAppConstants.sofas, space: 160,
+              title: 'Dining Table',
+              imageUrl: MyAppConstants.diningtable, space: 108,
+              route: DiningtableScreen(userName: event.userName,)
           ),
           Category(
             title: 'Bed',
@@ -35,8 +37,9 @@ class FurnitureblocBloc extends Bloc<FurnitureblocEvent, FurnitureblocState> {
             imageUrl: MyAppConstants.stool, space: 160,
           ),
           Category(
-            title: 'Dining Table',
-            imageUrl: MyAppConstants.diningtable, space: 108,
+            title: 'Sofas',
+            imageUrl: MyAppConstants.sofas, space: 160,
+            route: SofaScreen(userName: event.userName),
           ),
           Category(
             title: 'Wardrobe',

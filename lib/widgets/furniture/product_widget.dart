@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:homedecor_shopping_app/constants/My_app_icon.dart';
-import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homedecor_shopping_app/model/Data_Model/productData.dart';
 import 'package:homedecor_shopping_app/widgets/cached_image.dart';
 import 'package:homedecor_shopping_app/widgets/rating_widget.dart';
+
+import '../../view/view_model/wishicon_bloc/wishiconbloc_bloc.dart';
+import '../../view/view_model/wishicon_bloc/wishiconbloc_event.dart';
+import '../../view/view_model/wishicon_bloc/wishiconbloc_state.dart';
 
 class ProductWidget extends StatelessWidget {
   final ProductModel product;
@@ -13,8 +16,8 @@ class ProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return Container(
-      width: size.width * 0.48, // Exact width
-      height: size.height * 0.38, // Exact height
+      width: size.width * 0.48,
+      height: size.height * 0.38,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
@@ -48,11 +51,30 @@ class ProductWidget extends StatelessWidget {
                     color: Colors.white,
                     shape: BoxShape.circle
                   ),
-                  child: Icon(MyAppIcon.favorite,
-                    color: Colors.grey.shade300,
-                    size: 20,
+                  child: BlocBuilder<WishBloc, WishState>(
+                    builder: (context, state) {
+                      final isWishlisted = state is WishInitial && state.wishItems.contains(product.id);
+                      return InkWell(
+                        onTap: () {
+                          context.read<WishBloc>().add(ToggleWishEvent(product.id));
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(isWishlisted ? "Removed from Wishlist" : "Added to Wishlist",style: TextStyle(fontWeight: FontWeight.w500)),
+                              duration: Duration(seconds: 1),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                        },
+                        child: Icon(
+                          Icons.favorite,
+                          color: isWishlisted ? Colors.red : Colors.grey.shade300,
+                          size: 20,
+                        ),
+                      );
+                    },
                   ),
-                )
+                ),
               ),
 
               Positioned(

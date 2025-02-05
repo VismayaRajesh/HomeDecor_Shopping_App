@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class SocialLoginWidget extends StatelessWidget {
-  final String imageUrl; // Accepts a URL for the image
+  final String imageUrl;
 
   const SocialLoginWidget({
     super.key,
@@ -21,16 +21,16 @@ class SocialLoginWidget extends StatelessWidget {
           BoxShadow(
             color: Colors.black26,
             blurRadius: 4,
-            offset: Offset(0, 2), // Adds slight vertical shadow
+            offset: Offset(0, 2),
           ),
         ],
       ),
       child: Center(
         child: CachedNetworkImage(
-          imageUrl: imageUrl, // Image URL for CachedNetworkImage
-          placeholder: (context, url) => CircularProgressIndicator(), // Placeholder while loading
-          errorWidget: (context, url, error) => Icon(Icons.error), // Fallback for errors
-          width: 30, // Adjust image size within the container
+          imageUrl: imageUrl,
+          placeholder: (context, url) => CircularProgressIndicator(),
+          errorWidget: (context, url, error) => Icon(Icons.error),
+          width: 30,
           height: 30,
           fit: BoxFit.contain,
         ),

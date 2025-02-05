@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:homedecor_shopping_app/model/Data_Model/wishlistData.dart'; // Update the import
 
 import '../../constants/My_app_icon.dart';
-import '../../constants/my_app_constants.dart';
 import '../cached_image.dart';
 import '../rating_widget.dart';
 
 class WishlistproductWidget extends StatelessWidget {
-  final List<WishlistModel> wishlist; // Add the wishlist data as a parameter
+  final List<WishlistModel> wishlist;
 
   const WishlistproductWidget({super.key, required this.wishlist});
 
@@ -28,9 +27,9 @@ class WishlistproductWidget extends StatelessWidget {
               mainAxisSpacing: 8,
               childAspectRatio: 0.7,
             ),
-            itemCount: wishlist.length, // Use the dynamic length
+            itemCount: wishlist.length,
             itemBuilder: (BuildContext context, int index) {
-              final item = wishlist[index]; // Get the item at the current index
+              final item = wishlist[index];
               return Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Container(
@@ -57,7 +56,7 @@ class WishlistproductWidget extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(12),
                               child: CachedImage(
-                                imgurl: item.imageUrl, // Use dynamic image URL
+                                imgurl: item.imageUrl,
                               ),
                             ),
                           ),
@@ -93,7 +92,7 @@ class WishlistproductWidget extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  item.brand, // Use dynamic brand name
+                                  item.brand,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 11,
@@ -127,13 +126,24 @@ class WishlistproductWidget extends StatelessWidget {
                             bottomLeft: Radius.circular(15),
                           ),
                         ),
-                        child: Row(
-                          children: [
-                            SizedBox(width: 22),
-                            Text("Move to cart", style: TextStyle(color: CupertinoColors.white, fontWeight: FontWeight.w500, fontSize: 15)),
-                            SizedBox(width: 8),
-                            Icon(MyAppIcon.cart, color: CupertinoColors.white, size: 20)
-                          ],
+                        child: InkWell(
+                          onTap: (){
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text("Added to the cart",style: TextStyle(fontWeight: FontWeight.w500),),
+                                  duration: Duration(seconds: 1),
+                                  backgroundColor: Colors.green,
+                                )
+                                );
+                          },
+                          child: Row(
+                            children: [
+                              SizedBox(width: 22),
+                              Text("Move to cart", style: TextStyle(color: CupertinoColors.white, fontWeight: FontWeight.w500, fontSize: 15)),
+                              SizedBox(width: 8),
+                              Icon(MyAppIcon.cart, color: CupertinoColors.white, size: 20)
+                            ],
+                          ),
                         ),
                       ),
                     ],

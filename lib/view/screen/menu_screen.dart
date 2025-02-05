@@ -9,7 +9,6 @@ import 'package:homedecor_shopping_app/view/screen/profile_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/wishlist_screen.dart';
 
 import '../../constants/My_app_icon.dart';
-import '../../model/Data_Model/productData.dart';
 import '../../widgets/furniture/menu_widget.dart';
 import 'bottomnav_screen.dart';
 
@@ -88,7 +87,6 @@ class MenuScreen extends StatelessWidget {
               userName ?? 'guest',
               style: TextStyle(
                   color: Colors.black,
-                  fontSize: 15,
                   fontWeight: FontWeight.w500),
             ),
             subtitle: Text(
