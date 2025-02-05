@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:homedecor_shopping_app/constants/My_app_icon.dart';
 import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
 import 'package:homedecor_shopping_app/view/screen/address_screen.dart';
@@ -83,22 +82,22 @@ class CartScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 14),
                   CartItem(
-                    imageUrl: MyAppConstants.Productimage,
-                    title: "Eames single chair",
+                    imageUrl: MyAppConstants.imgs2,
+                    title: "Brown 3 seater sofa",
                     description:
-                        "My art design | 29' x 52' wide tufted eames chair - Green",
+                        "Boho Decor | 5' x 6' Feet | 3 seater - Brown",
                     price: 95,
                     oldPrice: 110,
                     savings: 15, brand: 'My art design', count: 1,
                   ),
                   CartItem(
-                    imageUrl: MyAppConstants.Productimage,
-                    title: "Wood lounge sofa",
+                    imageUrl: MyAppConstants.imgd3,
+                    title: "Scandinavian Oak Dining",
                     description:
-                        "Urban decor | 4' x 6' Feet, 2 seater | folding sofa - Blue",
-                    price: 140,
-                    oldPrice: 165,
-                    savings: 25, brand: 'My art design', count: 2,
+                        "Classic Homes | 4' x 6' Feet | 6 sets - Grey",
+                    price: 280,
+                    oldPrice: 295,
+                    savings: 25, brand: 'Nordic Styles', count: 2,
                   ),
                   SizedBox(height: 16),
                   Container(
@@ -120,7 +119,7 @@ class CartScreen extends StatelessWidget {
                     BoxShadow(
                       color: Colors.black26,
                       blurRadius: 2,
-                      offset: Offset(0, 0), // Adds slight vertical shadow
+                      offset: Offset(0, 0),
                     ),
                   ],
                 ),
@@ -190,7 +189,7 @@ class CartScreen extends StatelessWidget {
                                 },
                                 style: ElevatedButton.styleFrom(backgroundColor: Color.fromRGBO(153, 133, 88, 1),
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14), // Adjust the corner radius as needed
+                                    borderRadius: BorderRadius.circular(14),
                                   ),
                                   minimumSize: Size(155, 50),),
                                 child: Center(child: Row(

@@ -21,7 +21,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     emit(PaymentLoading());
 
     var options = {
-      'key': 'rzp_live_ILgsfZCZoFIKMb', // Replace with your Razorpay key
+      'key': 'rzp_live_ILgsfZCZoFIKMb',
       'amount': event.amount * 100,
       'name': event.name,
       'description': event.description,

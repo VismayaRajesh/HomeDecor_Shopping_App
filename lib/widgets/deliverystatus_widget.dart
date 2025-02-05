@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/My_app_icon.dart';
 
 class DeliverystatusWidget extends StatelessWidget {
   final String status;

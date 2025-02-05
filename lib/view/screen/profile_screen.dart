@@ -5,7 +5,6 @@ import 'package:homedecor_shopping_app/constants/My_app_icon.dart';
 import '../../widgets/backbutton.dart';
 import '../../widgets/furniture/Logoutbtn_widget.dart';
 import '../../widgets/furniture/menu_widget.dart';
-import 'menu_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   final String userName;

@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
 
 class CachedImage extends StatelessWidget {
   const CachedImage({super.key, required this.imgurl, this.imgheight, this.imgwidth, this.imgboxfit});

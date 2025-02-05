@@ -6,7 +6,6 @@ import 'package:homedecor_shopping_app/constants/My_app_icon.dart';
 import '../../widgets/backbutton.dart';
 import '../../widgets/furniture/wishlistProduct_widget.dart';
 import '../view_model/wishlistpdct_bloc/wishlistpdctbloc_bloc.dart';
-import 'menu_screen.dart';
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});
@@ -39,7 +38,7 @@ class WishlistScreen extends StatelessWidget {
           )
         ],
       ),
-      body: BlocBuilder<WishlistBloc, WishlistState>( // Wrap the body with BlocBuilder
+      body: BlocBuilder<WishlistBloc, WishlistState>(
         builder: (context, state) {
           if (state is WishlistLoad) {
             return SingleChildScrollView(
@@ -49,7 +48,7 @@ class WishlistScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 14.0),
                     child: Align(
                       child: Text(
-                        "${state.wishlist.length} products", // Dynamically set the count
+                        "${state.wishlist.length} products",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 15,
@@ -58,7 +57,7 @@ class WishlistScreen extends StatelessWidget {
                       alignment: Alignment.topLeft,
                     ),
                   ),
-                  WishlistproductWidget(wishlist: state.wishlist) // Pass wishlist data to the widget
+                  WishlistproductWidget(wishlist: state.wishlist)
                 ],
               ),
             );

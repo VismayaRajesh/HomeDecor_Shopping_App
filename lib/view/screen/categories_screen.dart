@@ -2,9 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:homedecor_shopping_app/view/screen/Sofa_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/bottomnav_screen.dart';
-
 
 import '../../constants/My_app_icon.dart';
 import '../../widgets/backbutton.dart';
@@ -54,7 +52,7 @@ class CategoriesScreen extends StatelessWidget {
             final categories = state.categories;
             return ListView.builder(
               padding: const EdgeInsets.only(top: 10.0, left: 14, right: 14),
-              itemCount: categories.length, // Set the number of items you want in the list
+              itemCount: categories.length,
               itemBuilder: (context, index) {
                 final category = categories[index];
                 return Padding(
@@ -72,9 +70,9 @@ class CategoriesScreen extends StatelessWidget {
                       ), dynamicSpace: category.space,
                     ),
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-                        return SofaScreen(userName : userName);
-                      }));
+                      if (category.route != null) {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => category.route!));
+                      }
                     },
                   ),
                 );

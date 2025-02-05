@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:homedecor_shopping_app/constants/My_app_icon.dart';
-import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
 
 class CategoriesWidget extends StatelessWidget {
   final Widget image;

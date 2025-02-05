@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:homedecor_shopping_app/view/screen/cart_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/details_screen.dart';
 import 'package:homedecor_shopping_app/view/screen/menu_screen.dart';
+import 'package:homedecor_shopping_app/widgets/furniture/topsellingList_widget.dart';
 
 import '../../constants/My_app_icon.dart';
 import '../../widgets/customContainer_widget.dart';
+import '../../widgets/furniture/popularlist_widget.dart';
 import '../../widgets/furniture/productList_widget.dart';
+import '../../widgets/furniture/rcntlyaddedList_widget.dart';
 import '../../widgets/subheading_widget.dart';
 
-// home_screen.dart
-import 'package:flutter/material.dart';
 
 class Homescreen extends StatelessWidget {
   final String userName;
@@ -28,7 +29,7 @@ class Homescreen extends StatelessWidget {
           title: Row(
             children: [
               CircleAvatar(
-                child: Text(userName[0].toUpperCase()),
+                child: Text(userName[0].toUpperCase(),style: TextStyle(fontSize: 18),),
               ),
               const SizedBox(width: 8),
               Column(
@@ -39,7 +40,7 @@ class Homescreen extends StatelessWidget {
                     'Hello',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -49,7 +50,7 @@ class Homescreen extends StatelessWidget {
                     style: const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
-                      fontSize: 12,
+                      fontSize: 13,
                     ),
                   ),
                 ],
@@ -94,7 +95,7 @@ class Homescreen extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 18),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
                 child: Row(
@@ -156,7 +157,7 @@ class Homescreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 22),
+              const SizedBox(height: 20),
               SubheadingWidget(name: "Categories          ",userName: userName),
               const SizedBox(height: 10),
               Padding(
@@ -194,11 +195,11 @@ class Homescreen extends StatelessWidget {
                 }));
               },),
               SubheadingWidget(name: "Popular              ",userName: userName),
-              ProductListWidget(),
+              PopularlistWidget(),
               SubheadingWidget(name: "Recently Added",userName: userName ),
-              ProductListWidget(),
+              RecentlyaddedList(),
               SubheadingWidget(name: "Top Selling        ",userName: userName ),
-              ProductListWidget(),
+              TopsellinglistWidget(),
               SizedBox(height: 6,)
             ],
           ),

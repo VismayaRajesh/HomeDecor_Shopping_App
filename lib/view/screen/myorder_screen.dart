@@ -1,8 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:flutter/material.dart';
 import 'package:homedecor_shopping_app/constants/My_app_icon.dart';
 import 'package:homedecor_shopping_app/constants/my_app_constants.dart';
-import 'package:homedecor_shopping_app/view/screen/menu_screen.dart';
 import 'package:homedecor_shopping_app/widgets/deliverystatus_widget.dart';
 
 import '../../widgets/backbutton.dart';

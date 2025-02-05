@@ -18,14 +18,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           imageUrl: MyAppConstants.Productimage,
           price: 156.00,
           rating: '4.5',
-          brand : 'My site'
+          brand : 'My site', id: '1'
         ),
         ProductModel(
           name: "Eames single chair",
           imageUrl: MyAppConstants.detailschair,
           price: 95.00,
           rating: '4.8',
-          brand: 'My art design'
+          brand: 'My art design', id: '2'
         ),
       ];
 
@@ -35,3 +35,4 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     }
   }
 }
+
